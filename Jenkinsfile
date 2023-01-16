@@ -29,7 +29,7 @@ pipeline {
                 echo 'BUILD EXECUTION STARTED'
                 sh 'go version'
                 sh 'go get ./...'
-                sh 'docker build . -t rahul0024/jenkins-demo'
+                sh 'docker build . -t rahul0024/service_sonar'
             }
         }
         stage('Docker Push') {
@@ -37,7 +37,7 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'dockerhubPassword', usernameVariable: 'dockerhubUser')]) {
                 sh "docker login -u ${env.dockerhubUser} -p ${env.dockerhubPassword}"
-                sh 'docker push rahul0024/jenkins-demo'
+                sh 'docker push rahul0024/service_sonar'
                 }
             }
         }
