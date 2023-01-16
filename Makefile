@@ -5,6 +5,9 @@ all: clean get-deps build test
 
 version := "0.1.0"
 
+unit-tests:
+	go test ./...
+
 build:
 	mkdir -p bin
 	go build -o bin/service-sonar main.go
