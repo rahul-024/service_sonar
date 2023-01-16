@@ -14,6 +14,7 @@ pipeline {
     stages {
         stage("SonarQube Analysis") {
             steps {
+                echo 'SONARQUBE ANALYSIS EXECUTION STARTED'
                 script {
                     def scannerHome = tool 'SonarQubeScanner-4.8.0';
                     withSonarQubeEnv("sonarqube-9.8") {
@@ -24,7 +25,7 @@ pipeline {
         }
 
 
-        stage("unit-test") {
+        stage("Unit Test") {
             steps {
                 echo 'UNIT TEST EXECUTION STARTED'
                 sh 'make unit-tests'
@@ -36,7 +37,7 @@ pipeline {
         //         sh 'make functional-tests'
         //     }
         // }
-        stage("build") {
+        stage("Build") {
             steps {
                 echo 'BUILD EXECUTION STARTED'
                 sh 'go version'
